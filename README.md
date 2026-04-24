@@ -370,26 +370,12 @@ Every Inngest function:
 - Writes a structured result object on completion
 - Sets `error_reason` and transitions to a failure state on exception
 
-**Inngest functions by subsystem:**
+**Representative Inngest functions by subsystem(more than 100 such fuctions exist):**
 
 | Function ID | Trigger event |
 |---|---|
 | `biology/ranking.run` | `biology/ranking.requested` |
 | `biology/toxicity.run` | `biology/toxicity.requested` |
-| `biology/pk-feasibility.run` | `biology/pk-feasibility.requested` |
-| `biology/rescue-scoring.run` | `biology/rescue-scoring.requested` |
-| `biology/next-experiment.run` | `biology/next-experiment.requested` |
-| `biology/molecule-design.run` | `biology/molecule-design.requested` |
-| `biology/experiment-scoring.run` | `biology/experiment-scoring.requested` |
-| `biology/cross-program.run` | `biology/cross-program.requested` |
-| `workflow/experiment-planning.run` | `workflow/experiment-planning.requested` |
-| `workflow/protocol-build.run` | `workflow/protocol-build.requested` |
-| `workflow/document-generation.run` | `workflow/document-generation.requested` |
-| `workflow/notifications.dispatch` | `workflow/notification.requested` |
-| `workflow/inventory-forecast.run` | cron (scheduled) |
-| `network/routing.run` | `network/routing.requested` |
-| `network/result-normalization.run` | `network/result.uploaded` |
-| `network/partner-rescoring.run` | `network/partner.rescore-requested` |
 | `wetlab/run-monitoring.poll` | cron (scheduled) |
 | `wetlab/qc-check.run` | `wetlab/qc.check-requested` |
 
@@ -448,16 +434,16 @@ Role-based access is enforced at both the RLS layer (database) and the UI routin
 ### Prerequisites
 
 - Node.js 18+
-- A Supabase project (free tier works)
-- An Anthropic API key
+- A Supabase project 
+- An LLM API key
 - `gh` CLI (for GitHub operations)
 - `npx inngest-cli` (for local background job processing)
 
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/sidb5/BiotechOS-DrugDiscovery
-cd BiotechOS-DrugDiscovery/biotechos
+git clone https://github.com/sidb5/BiotechOS-AI-Native-ClosedLoop-Predictive-Robotic-DrugDiscovery-Engine
+cd BiotechOS-AI-Native-ClosedLoop-Predictive-Robotic-DrugDiscovery-Engine/biotechos
 npm install
 ```
 
@@ -492,25 +478,6 @@ supabase/migrations/008_signup_rls_fixes.sql
 supabase/migrations/009_fix_users_rls_recursion.sql
 supabase/migrations/010_cross_org_rls_policies.sql
 ```
-
-### 4. Seed demo data
-
-```bash
-npx tsx supabase/seed.ts
-```
-
-This creates two orgs with six demo accounts:
-
-| Email | Password | Role |
-|---|---|---|
-| `alice@nexus.bio` | `Seed1234!` | Founder (Nexus Therapeutics) |
-| `bob@nexus.bio` | `Seed1234!` | Scientist |
-| `carol@nexus.bio` | `Seed1234!` | Scientist |
-| `diana@vertexcro.com` | `Seed1234!` | CRO Business Development |
-| `evan@vertexcro.com` | `Seed1234!` | CRO Project Manager |
-| `fiona@vertexcro.com` | `Seed1234!` | CRO Lab Operations |
-
-Four projects are seeded across all pipeline stages: KRAS G12C Oncology (running), Alzheimer's Tau Aggregation Inhibitor (results ready), ESKAPE Antibacterial (planned), GLP-1R Oral Agonist (awaiting approval). The full dependency chain is seeded: molecules → batches → candidate sets → prediction jobs → experiment plans → protocol versions → assay packages → routing decisions → dispatch jobs → wetlab runs → result bundles → rescue scores.
 
 ### 5. Start the dev servers
 
