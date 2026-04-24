@@ -2,7 +2,7 @@
 
 > **Public showcase repository.** This repo contains only the README and screenshots. The full source code is maintained in a private commercial repository.
 
-A prototype of a patent I invented of opearating system that enables fully automated closed drug discovery drug discovery pipelines  integrating autoamted robotic wetlab netowrk around the worldm with autoamtic capacity utilization, routing mechanisms, ai compute engine to predict pre-clinical outcomes, continuous AI learning and imprvement engine, agentic workflow OS, netowrk OS  to orchestrate the full preclinical drug discovery pipeline — from compound hypothesis to wet-lab execution to rescue scoring.
+A prototype of a patent I invented of operating system that enables fully automated closed drug discovery drug discovery pipelines  integrating autoamted robotic wetlab netowrk around the worldm with autoamtic capacity utilization, routing mechanisms, ai compute engine to predict pre-clinical outcomes, continuous AI learning and imprvement engine, agentic workflow OS, netowrk OS  to orchestrate the full preclinical drug discovery pipeline — from compound hypothesis to wet-lab execution to rescue scoring.
 
 Built end-to-end in TypeScript with Next.js 14, Supabase, Vercel, Inngest, Robotics Intergation with LIMS, Wetlab instruments LLMs, Geneformer, ChemBert,ProtoBert and more.
 
